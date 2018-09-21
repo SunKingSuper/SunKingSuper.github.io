@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description" content="A place for Visdom"><meta name="keywords" content="tech, technique"><title>每日打卡 - 静心斋</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com"><span>Github</span></a></li><li><a href="https://www.v2ex.com/"><span>V2EX</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">每日打卡</h1><ul class="meta"><li><i class="icon icon-author"></i>SKS</li><li><i class="icon icon-clock"></i>4 Minutes</li><li><i class="icon icon-calendar"></i>September 21, 2018</li></ul></div></div><div class="article-content" style="max-width:800px"><h1 id="每日打卡"><a href="#每日打卡" class="headerlink" title="每日打卡"></a>每日打卡</h1><hr>
+<h3 id="每日一刷"><a href="#每日一刷" class="headerlink" title="每日一刷"></a>每日一刷</h3><blockquote>
+<p>请编写一个函数，可以把一个整数输入转换成相对应罗马数字组合的字符串.</p>
+<p>现代罗马数字是通过从最左边的数字开始分别表示每个数字并跳过值为零的任何数字来编写的。在罗马数字中，呈现1990：1000 = M，900 = CM，90 = XC;导致MCMXC。 2008年写成2000 = MM，8 = VIII;或MMVIII。 1666按降序使用每个罗马符号：MDCLXVI</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+<tr>
+<td>L</td>
+<td>50</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>1,000</td>
+</tr>
+</tbody>
+</table>
+<p>摘自codewars.com</p>
+</blockquote>
+<p>测试用例有：</p>
+<p>14 == XIV</p>
+<p>21 == XXI</p>
+<p>984 == CMLXXV</p>
+<h3 id="今日知识点整理"><a href="#今日知识点整理" class="headerlink" title="今日知识点整理"></a>今日知识点整理</h3><hr>
+<p><em>无</em></p>
+<hr>
+<h3 id="每日一刷答案"><a href="#每日一刷答案" class="headerlink" title="每日一刷答案"></a>每日一刷答案</h3><p>我自己的解答<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="comment"># TODO convert int to roman string</span></span><br><span class="line">    Symbol = [<span class="string">'I'</span>, <span class="string">'V'</span>, <span class="string">'X'</span>, <span class="string">'L'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'M'</span>]</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    string = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        anum = n%<span class="number">10</span></span><br><span class="line">        bias = anum // <span class="number">5</span></span><br><span class="line">        time = anum % <span class="number">5</span></span><br><span class="line">        <span class="keyword">if</span> anum == <span class="number">4</span> <span class="keyword">or</span> anum == <span class="number">9</span>:</span><br><span class="line">            string = Symbol[<span class="number">2</span> * i] + Symbol[<span class="number">2</span> * i + <span class="number">1</span> + bias] + string</span><br><span class="line">        <span class="keyword">elif</span> anum &gt;= <span class="number">5</span>:</span><br><span class="line">            string = Symbol[<span class="number">2</span> * i + <span class="number">1</span>] + Symbol[<span class="number">2</span> * i] * time + string</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            string = Symbol[<span class="number">2</span> * i + bias] * time + string</span><br><span class="line">        n = n // <span class="number">10</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> string</span><br></pre></td></tr></table></figure></p>
+<p>看了codewar上的答案，个人觉得最简洁、最pythonic的解答是用了zip来映射数字和罗马字符，再用列表生成器返回答案。而我则是利用规则来做的，显得有些繁琐。</p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/record/">record</a><span class="tag-list-count">2</span></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cjmbaq1js0000mq2doegr9wcw" data-title="每日打卡" data-url="http://yoursite.com/2018/09/21/KaKa/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2018/09/11/My-Python-Life-md/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/sunkingsuper" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://weibo.com/" title="Weibo" target="_blank"><i class="icon icon-weibo"></i></a></li><li><a href="https://www.segmentfault.com/" title="SegmentFault" target="_blank"><i class="icon icon-segmentfault"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2018 静心斋<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small><small>, THEME BY <a href="https://github.com/BoizZ/hexo-theme-laughing" target="_blank">LAUGHING</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
