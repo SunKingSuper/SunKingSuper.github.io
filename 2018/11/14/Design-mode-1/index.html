@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="description" content="A place for Visdom"><meta name="keywords" content="tech, technique"><title>漫谈设计模式（一） - 静心斋</title><link rel="stylesheet" href="/css/main_style.min.css"><link rel="icon" href="/favicon.ico"></head><body><input id="navi" type="checkbox"><ul class="main-navication"><li><a href="/"><span>Home</span></a></li><li><a href="https://github.com"><span>Github</span></a></li><li><a href="https://www.v2ex.com/"><span>V2EX</span></a></li></ul><div class="wrapper" id="wrap"><div class="post-header"><label class="navi-button light" for="navi">MENU</label><img class="background" src="http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg"><div class="post-title"><h1 class="title">漫谈设计模式（一）</h1><ul class="meta"><li><i class="icon icon-author"></i>SKS</li><li><i class="icon icon-clock"></i>5 Minutes</li><li><i class="icon icon-calendar"></i>November 14, 2018</li></ul></div></div><div class="article-content" style="max-width:800px"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前我曾在我的个人网站发了一篇关于《图解设计模式》的一小部分笔记，后来我又接触了一本用Python来讲解设计模式的书，我觉得那本讲得也蛮好的，于是我决定把两本书合在一起做笔记，每种模式都用Java和Python编写相应例子，以加深自己的理解。最近还是挺忙的，但我尽力每天为大家讲解一种设计模式吧。</p>
+<p>本系列博文参考书籍及资料有：</p>
+<ul>
+<li>《图解设计模式》结城浩</li>
+<li>《精通Python设计模式》Sakis Kasampails</li>
+<li>博文 (史上最全设计模式导学目录)[<a href="http://blog.csdn.net/lovelion/article/details/17517213]" target="_blank" rel="noopener">http://blog.csdn.net/lovelion/article/details/17517213]</a> 强烈推荐看看，很棒</li>
+</ul>
+<h2 id="何谓设计模式"><a href="#何谓设计模式" class="headerlink" title="何谓设计模式"></a>何谓设计模式</h2><blockquote>
+<p>每个模式都描述了一个在我们的环境中不断出现的问题，然后描述了该问题的解决方案的核心，通过这种方式，我们可以无数次地重用那些已有的成功的解决方案，无需再重复相同的工作。——Christopher Alexander《建筑的永恒之道》</p>
+</blockquote>
+<blockquote>
+<p>一句话概括，即，<em><strong>模式是在特定环境下人们解决某类重复出现问题的一套成功或有效的解决方案</strong></em></p>
+</blockquote>
+<p>一个人每天早上起床刷牙洗脸吃早餐，直到晚上洗澡睡觉，在这期间他去哪里，他做了什么，在外部环境不变的条件下,他总会显示出一些固定的行为，比如学生在学校，工人在工厂，我们把其称为行为<strong>模式</strong>,是为了解决此人目前的环境需求，比如效率越高的学生，越是呈现出“宿舍——饭堂——图书馆”三点一线的行为模式，这是大家在学校，为了提高学业成绩，而不自觉地采用相对有效的解决方案。</p>
+<p>同理，在程序设计的时候，面向不同的应用场景，都存在一些被广泛认同的模式，使用该模式可以(不一定会更好，但一定会有所保障)的模式，我们称之为设计模式。而这些设计模式，往往会以各种方式出现在我们平时的开发活动中，比如软件框架，vue.js号称按照MVVC架构设计，在我看来，这就是一种设计模式，在比如程序代码库，库开发者依据设计模式设计库，只留下API供使用者使用，这是让使用者间接使用上设计模式。总之，设计模式已经无处不在。</p>
+<p>关于设计模式，不得不提到GoF四人组。他们在20世纪90年代做了一项伟大的事情，就是，将开发人员认同的模式整理成23中设计模式，而我们本系列博文也会按照这23种模式一种一种给大家讲解。</p>
+<h2 id="23种设计模式"><a href="#23种设计模式" class="headerlink" title="23种设计模式"></a>23种设计模式</h2><ul>
+<li>创建型模式<ul>
+<li>Simple Factory Pattern</li>
+<li>Factiry Method Pattern</li>
+<li>Abstract Factory Pattern</li>
+<li>Singleton Pattern</li>
+<li>Prototype Pattern</li>
+<li>Builder Pattern</li>
+</ul>
+</li>
+<li>结构性模式<ul>
+<li>Adapter Pattern</li>
+<li>Bridge Pattern</li>
+<li>Composite Pattern</li>
+<li>Decorator Pattern</li>
+<li>Facade Pattern</li>
+<li>Flyweight Pattern</li>
+<li>Proxy Pattern</li>
+</ul>
+</li>
+<li>行为型模式<ul>
+<li>Chain of Responsibility Pattern</li>
+<li>Command Pattern</li>
+<li>Interpreter Pattern</li>
+<li>Iterator Pattern</li>
+<li>Mediator Pattern</li>
+<li>Memento Pattern</li>
+<li>Observer Pattern</li>
+<li>State Pattern</li>
+<li>Strategy Pattern</li>
+<li>Template Method Pattern</li>
+<li>Visitor Pattern</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>之所以那么想为设计模式整理成笔记，也是因为自己在平常编程的时候，也时常遇到代码混乱的时候。这种混乱有时就是没有事先设计好代码的结构，经常就是写着写着代码，突然觉得这么写会更好，代码复用度更高，于是就这么写了，可前面那些却懒得去修正，造成整个代码看起来特别丑。<br>比如说：在写分支结构的时候，我们一般会这样<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (...) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (...) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; ...一大段... </span><br><span class="line"></span><br><span class="line"><span class="comment">// 又或者</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(...) &#123;</span><br><span class="line">    <span class="keyword">case</span> x: ...</span><br><span class="line">    ...一大段... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这么写就总觉得程序中间突然多出一大堆分支结构，一个函数可以写个几十行，难看。<br>所以有一天我琢磨出了，用状态机吧，现在我Python一般这么写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">funcDict = &#123;</span><br><span class="line">    key1:fun1,</span><br><span class="line">    ...</span><br><span class="line">    keyn:funn</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 执行的时候只要保证输入在集合里面则很简单</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">(choice)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> funcDict[choice]()</span><br></pre></td></tr></table></figure></p>
+<p>当然，当看到别人源码有更好的写法时，我就学习别人的写法。于个人体会，我认为这就是一种设计模式。</p>
+<p>设计模式是一个工具，是一个将思想封装好的“函数”、“方法”。学会了设计模式，至少在软件编写的时候，更加有章法，也少走弯路。</p>
+</div><div class="article-meta" style="max-width:800px"><div class="tags"><i class="icon icon-tag"></i><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/reading/">reading</a><span class="tag-list-count">1</span></li></ul></div></div><div class="article-comment" style="max-width:800px"><div class="ds-thread" id="ds-thread" data-thread-key="cjogqsh2x00003v2dx8v6rcar" data-title="漫谈设计模式（一）" data-url="http://yoursite.com/2018/11/14/Design-mode-1/" site-name="ueibo"></div><script>var siteName = document.getElementById('ds-thread').getAttribute('site-name');
+var duoshuoQuery = {short_name: siteName};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+  || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();</script></div><ul class="navication"><li class="home"><a href="/"><i class="icon icon-home"></i></a></li><li><a href="/2018/11/11/Centos7-install-Python/"><i class="icon icon-arror-right"></i></a></li></ul><div class="page-footer"><div class="top"><ul class="social"><li><a href="https://github.com/sunkingsuper" title="Github" target="_blank"><i class="icon icon-github"></i></a></li><li><a href="https://weibo.com/" title="Weibo" target="_blank"><i class="icon icon-weibo"></i></a></li><li><a href="https://www.segmentfault.com/" title="SegmentFault" target="_blank"><i class="icon icon-segmentfault"></i></a></li></ul></div><div class="bottom"><p class="copyright">© 2018 静心斋<br><small>POWER BY <a href="https://hexo.io" target="_blank">HEXO</a></small><small>, THEME BY <a href="https://github.com/BoizZ/hexo-theme-laughing" target="_blank">LAUGHING</a></small></p></div></div></div><script>var wrap = document.getElementById('wrap');
+window.onload = function () {
+  wrap.className += ' done';
+}</script></body></html>
